@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 import org.solent.com504.factoryandfacade.model.Animal;
 import org.solent.com504.factoryandfacade.model.AnimalObjectFactory;
 import org.solent.com504.factoryandfacade.model.FarmFacade;
-import org.solent.com504.factoryandfacade.model.FarmFacadeImpl;
 
 /**
  *
@@ -20,7 +19,7 @@ public class FarmFacadeTest {
     @Test
     public void FarmFacadeTest() {
 
-        FarmFacadeImpl farmFacade = AnimalObjectFactory.createFarmFacadeImpl();
+        FarmFacade farmFacade = AnimalObjectFactory.createFarmFacade();
         assertNotNull(farmFacade);
         
         // WHAT TESTS WOULD YOU CREATE HERE TO SET UP AND TEST THE FARM FACADE?

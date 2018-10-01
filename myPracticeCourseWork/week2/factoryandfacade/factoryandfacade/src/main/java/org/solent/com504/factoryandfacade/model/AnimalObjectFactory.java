@@ -14,8 +14,7 @@ public class AnimalObjectFactory{
         return new Cow();
     }
 
-    //public static FarmFacade createFarmFacade() { throw new UnsupportedOperationException("Not supported yet."); }
-
-    public static FarmFacadeImpl createFarmFacadeImpl() {return new FarmFacadeImpl();
+    public static FarmFacade createFarmFacade() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
