@@ -1,6 +1,8 @@
 package org.solent.com504.factoryandfacade.model;
 
 public class AnimalObjectFactory{
+    
+
 
     public static Animal createCat() {
         return new Cat();
@@ -15,6 +17,7 @@ public class AnimalObjectFactory{
     }
 
     public static FarmFacade createFarmFacade() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new FarmFacadeImpl();
     }
+   
 }

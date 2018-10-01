@@ -23,6 +23,8 @@ public class FarmFacadeTest {
         assertNotNull(farmFacade);
         
         // WHAT TESTS WOULD YOU CREATE HERE TO SET UP AND TEST THE FARM FACADE?
-
+        for(Animal animal: farmFacade.getAllAnimals()){
+            animal.getSound();
+        }
     }
 }
