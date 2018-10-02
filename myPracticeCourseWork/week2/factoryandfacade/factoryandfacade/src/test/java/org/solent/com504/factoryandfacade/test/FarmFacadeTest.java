@@ -9,25 +9,25 @@ import static org.junit.Assert.assertNotNull;
 
 /**
  *
- * @author cgallen
+ * @author gallenc
  */
 public class FarmFacadeTest {
 
     @Test
     public void FarmFacadeTest() {
         System.out.println("\n++++++++++++++++++++\nstart of FarmFacadeTest()");
-
+        
         FarmFacade farmFacade = AnimalObjectFactory.createFarmFacade();
         assertNotNull(farmFacade);
 
-        farmFacade.addCat("cato");
-        farmFacade.addDog("doge");
+        farmFacade.addCat("cat");
+        farmFacade.addDog("dogo");
         farmFacade.addCow("milky");
 
         // WHAT TESTS WOULD YOU CREATE HERE TO SET UP AND TEST THE FARM FACADE?
-
-
-        System.out.println("\n====================\nstart test as Animal without casting");
+        System.out.println("Length of animalList: " 
+                + farmFacade.getAllAnimals().size() 
+                + "\n====================\nstart test as Animal without casting");
         for(Animal animal: farmFacade.getAllAnimals()){
 
             System.out.println(animal.toString());
