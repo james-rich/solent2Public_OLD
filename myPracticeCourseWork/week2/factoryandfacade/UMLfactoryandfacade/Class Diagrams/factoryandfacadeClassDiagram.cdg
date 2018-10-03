@@ -28,13 +28,13 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Interface name="Animal" package="org.solent.com504.factoryandfacade.model" visibility="public" xPosition="606.0" yPosition="249.0">
+    <Interface name="Animal" package="org.solent.com504.factoryandfacade.model" visibility="public" xPosition="607.0" yPosition="243.0">
       <Methods>
         <Method name="getSound" returnType="String" visibility="public"/>
-        <Method name="setName" returnType="Null" visibility="public">
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
           <Argument type="String" name="name"/>
         </Method>
-        <Method name="getName" returnType="String" visibility="public"/>
       </Methods>
     </Interface>
     <Interface name="FarmFacade" package="org.solent.com504.factoryandfacade.model" visibility="public" xPosition="204.0" yPosition="220.0">
