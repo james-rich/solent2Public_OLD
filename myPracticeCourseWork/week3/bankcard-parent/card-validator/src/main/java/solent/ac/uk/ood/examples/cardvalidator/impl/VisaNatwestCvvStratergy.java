@@ -30,12 +30,18 @@ public class VisaNatwestCvvStratergy implements CvvAlgorythimStrategy {
 
         String allInfo = name + endDate + cardnumber + iin + issueNumber;
         
-        int res = 0;
+        long res = 3;
         for(char c: allInfo.toCharArray()){
-            res = (res * Character.getNumericValue(c));
+            int charToInt = Character.getNumericValue(c);
+            if(charToInt > 0){
+                res = (res * charToInt) % 999;
+            }else{
+                res = (res - -charToInt) % 999;
+                System.out.println("INT: " + String.valueOf(res) + " -> " + Character.getNumericValue(c));
+            }
         }
-        System.out.println("NEW CVV = " +res);
         return String.valueOf(res);
+        
     }
    
 
