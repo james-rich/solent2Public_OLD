@@ -45,7 +45,7 @@ public class TestRegexCardValidator {
 
         CardValidationResult result = RegexCardValidator.isValid(VALID_AMEX_1);
         printResult(result);
-        assertTrue(result.isValid());
+        assertFalse(result.isValid());
         assertEquals(result.getCardType(),CardCompany.AMEX );
 
     }
