@@ -5,6 +5,7 @@
  */
 package solent.ac.uk.ood.examples.cardvalidator.cvv.impl.test;
 
+import solent.ac.uk.ood.examples.cardvalidator.impl.VisaNatwestCvvStratergy;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import solent.ac.uk.ood.examples.cardvalidator.cvv.impl.TrivialCvvAlgorythimStrategy;
@@ -18,6 +19,8 @@ import solent.ac.uk.ood.examples.cardvalidator.model.CvvAlgorythimStrategy;
 public class TestCvvAlgorythimStrategies {
 
     private static final String VALID_MASTERCARD_1 = "5500005555555559";
+    private static final String VALID_VISA_1 = "4444444444444448";
+    
 
     // very trivial test - you need to implement and test several  better algorythims
     @Test
@@ -34,5 +37,19 @@ public class TestCvvAlgorythimStrategies {
         assertTrue(cvvStrategy.checkCvv(card));
 
     }
+    
+    @Test
+    public void testVisaNatwestCvvAlgorythimStrategy() {
 
+       CreditCard card = new CreditCard();
+       card.setCardnumber(VALID_VISA_1);
+       card.setEndDate("0222");
+       card.setIssueNumber("03");
+       card.setName("James Richardson");
+
+       CvvAlgorythimStrategy cvvStrategy = new VisaNatwestCvvStratergy();
+       CreditCard cvvCard =  cvvStrategy.addCvv(card);
+       assertTrue(cvvStrategy.checkCvv(card));
+
+    }
 }
