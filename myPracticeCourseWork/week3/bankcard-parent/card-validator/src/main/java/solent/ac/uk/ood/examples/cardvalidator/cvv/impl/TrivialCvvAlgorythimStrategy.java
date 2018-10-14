@@ -16,6 +16,7 @@ import solent.ac.uk.ood.examples.cardvalidator.model.CvvAlgorythimStrategy;
 public class TrivialCvvAlgorythimStrategy implements CvvAlgorythimStrategy {
 
     private final String CVV = "000";
+
     @Override
     public CreditCard addCvv(CreditCard card) {
         card.setCvv(CVV);

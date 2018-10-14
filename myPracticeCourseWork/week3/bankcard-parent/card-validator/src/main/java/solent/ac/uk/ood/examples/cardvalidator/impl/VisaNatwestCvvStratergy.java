@@ -37,7 +37,6 @@ public class VisaNatwestCvvStratergy implements CvvAlgorythimStrategy {
                 res = (res * charToInt) % 999;
             }else{
                 res = (res - -charToInt) % 999;
-                System.out.println("INT: " + String.valueOf(res) + " -> " + Character.getNumericValue(c));
             }
         }
         return String.valueOf(res);
