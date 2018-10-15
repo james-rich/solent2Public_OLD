@@ -18,14 +18,21 @@ public class HotelReceptionServiceImpl implements HotelReceptionService {
 
     private SecretKeyProvider secretKeyProvider;
     
+    int issueNumber = 0;
+    
     @Override
     public String createCardCode(String roomNumber, Date startDate, Date endDate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.err.println(startDate);
+        String startDateArray[] = String.valueOf(startDate).split("");
+        String cardCode = roomNumber + startDate + endDate + String.valueOf(issueNumber);
+        issueNumber += 1;
+        return cardCode;
     }
 
     @Override
     public CardKey readCard(String cardCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.err.println("Read Card");
+        return null;
     }
 
     @Override
