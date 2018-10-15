@@ -46,13 +46,13 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>lock-reception</artifactId>
             <version>0.1-SNAPSHOT</version>
             <scope>test</scope>
             <type>jar</type>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 </project>

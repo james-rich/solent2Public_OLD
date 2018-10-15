@@ -18,14 +18,10 @@ public class HotelReceptionServiceImpl implements HotelReceptionService {
 
     private SecretKeyProvider secretKeyProvider;
     
-    int issueNumber = 0;
-    
     @Override
     public String createCardCode(String roomNumber, Date startDate, Date endDate) {
-        System.err.println(startDate);
-        String startDateArray[] = String.valueOf(startDate).split("");
-        String cardCode = roomNumber + startDate + endDate + String.valueOf(issueNumber);
-        issueNumber += 1;
+        String cardCode = String.valueOf(startDate);
+        System.out.println(cardCode);
         return cardCode;
     }
 
