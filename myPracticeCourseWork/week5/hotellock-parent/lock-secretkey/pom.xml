@@ -17,7 +17,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
@@ -25,7 +25,7 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
-        <!--REMOVE ME note that this is a test dependency - you only  need reception code to test the lock 
+        <!--REMOVE ME note that this is a test dependency - you only  need reception code to test the lock
         <dependency>
             <groupId>solent.ac.uk.ood.examples</groupId>
             <artifactId>lock-reception</artifactId>

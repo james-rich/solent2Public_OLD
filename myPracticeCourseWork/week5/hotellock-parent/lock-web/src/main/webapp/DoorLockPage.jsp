@@ -4,19 +4,17 @@
     Author     : cgallen
 --%>
 
-<%@page import="java.util.logging.Logger"%>
-<%@page import="java.util.logging.LogManager"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.reception.HotelReceptionServiceImpl.TRANSACTIONLOG"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.secretKey.SecretKeyProviderImpl"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.reception.HotelReceptionServiceImpl"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelRoomLockService"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelReceptionService"%>
+<%@page import="org.apache.logging.log4j.LogManager"%>
+<%@page import="org.apache.logging.log4j.Logger"%>
 <%@page import="solent.ac.uk.ood.examples.hotellock.model.CardKey"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelReceptionService"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.reception.HotelReceptionServiceImpl"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.secretkey.SecretKeyProviderImpl" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HotelReceptionService hotelReceptionService = (HotelReceptionService) session.getAttribute("hotelReceptionService");
-    public static final Logger TRANSACTIONLOG = LogManager.getLogger(HotelRoomLockServiceImplTest.class);
+    Logger TRANSACTIONLOG = LogManager.getLogger("DoorLockPage.jsp");
     // If the user session has no hotelReceptionService, create a new one
     if (hotelReceptionService == null) {
         hotelReceptionService = new HotelReceptionServiceImpl();
@@ -51,6 +49,7 @@
         try {
             CardKey cardKey = hotelReceptionService.readCard(cardCode);
             if(cardKey.getRoomNumber().equals(roomNumber)){
+
                 TRANSACTIONLOG.info("room number '" + roomNumber + "'  card access successfully opened door: " + cardKey);
             }
         } catch (Exception ex) {
