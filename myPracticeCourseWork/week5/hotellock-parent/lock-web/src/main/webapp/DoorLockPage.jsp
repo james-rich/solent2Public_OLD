@@ -3,9 +3,9 @@
     Created on : Oct 20, 2018, 6:34:33 PM
     Author     : cgallen
 --%>
-
 <%@page import="org.apache.logging.log4j.LogManager"%>
 <%@page import="org.apache.logging.log4j.Logger"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider"%>
 <%@page import="solent.ac.uk.ood.examples.hotellock.model.CardKey"%>
 <%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelReceptionService"%>
 <%@page import="solent.ac.uk.ood.examples.hotellock.reception.HotelReceptionServiceImpl"%>
@@ -14,7 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HotelReceptionService hotelReceptionService = (HotelReceptionService) session.getAttribute("hotelReceptionService");
-    Logger TRANSACTIONLOG = LogManager.getLogger("DoorLockPage.jsp");
+    Logger TRANSACTIONLOG = LogManager.getLogger("transaction-log");
     // If the user session has no hotelReceptionService, create a new one
     if (hotelReceptionService == null) {
         hotelReceptionService = new HotelReceptionServiceImpl();
@@ -49,7 +49,6 @@
         try {
             CardKey cardKey = hotelReceptionService.readCard(cardCode);
             if(cardKey.getRoomNumber().equals(roomNumber)){
-
                 TRANSACTIONLOG.info("room number '" + roomNumber + "'  card access successfully opened door: " + cardKey);
             }
         } catch (Exception ex) {
