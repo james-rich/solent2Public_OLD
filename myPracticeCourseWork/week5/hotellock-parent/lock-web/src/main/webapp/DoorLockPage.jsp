@@ -45,11 +45,16 @@
     }
 
     boolean errorReadingCard = false;
+    boolean doorStatus = false;
     if (!cardCode.equals(null) && !roomNumber.equals(null)) {
         try {
             CardKey cardKey = hotelReceptionService.readCard(cardCode);
             if(cardKey.getRoomNumber().equals(roomNumber)){
                 TRANSACTIONLOG.info("room number '" + roomNumber + "'  card access successfully opened door: " + cardKey);
+                doorStatus = true;
+            }
+            else{
+                doorStatus = false;
             }
         } catch (Exception ex) {
             errorReadingCard = true;
@@ -82,8 +87,11 @@
             <br>
             <input type="submit" value="Unlock Door">
         </form> 
-         <br>
-        <div id="result"></div>
-
+        <br>
+        <% if (doorStatus) { %>
+            <div id="result">
+                Door Unlocked
+            </div>
+        <% } %>
     </body>
 </html>
