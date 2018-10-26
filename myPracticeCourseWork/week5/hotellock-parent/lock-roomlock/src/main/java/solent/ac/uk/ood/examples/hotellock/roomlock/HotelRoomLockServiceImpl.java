@@ -63,9 +63,9 @@ public class HotelRoomLockServiceImpl implements HotelRoomLockService {
             return false;
         }
 
-        if (!WILDCARD_ROOM_NUMBER.equals(decodedCardKey.getRoomNumber())
-                && !roomNumber.equals(decodedCardKey.getRoomNumber())) {
-            TRANSACTIONLOG.warn("room number '" + roomNumber 
+
+        if (!WILDCARD_ROOM_NUMBER.equals(decodedCardKey.getRoomNumber()) && !roomNumber.equals(decodedCardKey.getRoomNumber())) {
+            TRANSACTIONLOG.warn("room number '" + roomNumber
                     + "' illegal card access attempted with card details: " + decodedCardKey);
             return false;
         }

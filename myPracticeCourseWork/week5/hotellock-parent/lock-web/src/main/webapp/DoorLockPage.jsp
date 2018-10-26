@@ -3,24 +3,25 @@
     Created on : Oct 20, 2018, 6:34:33 PM
     Author     : cgallen
 --%>
-<%@page import="org.apache.logging.log4j.LogManager"%>
-<%@page import="org.apache.logging.log4j.Logger"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.CardKey"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelReceptionService"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.reception.HotelReceptionServiceImpl"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.secretkey.SecretKeyProviderImpl" %>
 
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.model.CardKey"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelRoomLockService"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.secretkey.SecretKeyProviderImpl"%>
+<%@page import="solent.ac.uk.ood.examples.hotellock.roomlock.HotelRoomLockServiceImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HotelReceptionService hotelReceptionService = (HotelReceptionService) session.getAttribute("hotelReceptionService");
-    Logger TRANSACTIONLOG = LogManager.getLogger("transaction-log");
+//    HotelReceptionService hotelReceptionService = (HotelReceptionService) session.getAttribute("hotelReceptionService");
+    HotelRoomLockService hotelRoomLockService = (HotelRoomLockService) session.getAttribute("hotelRoomLockService");
     // If the user session has no hotelReceptionService, create a new one
-    if (hotelReceptionService == null) {
-        hotelReceptionService = new HotelReceptionServiceImpl();
+    if (hotelRoomLockService == null) {
+        hotelRoomLockService = new HotelRoomLockServiceImpl();
         SecretKeyProvider secretKeyProvider = new SecretKeyProviderImpl();
-        hotelReceptionService.setSecretKeyProvider(secretKeyProvider);
-        session.setAttribute("hotelReceptionService", hotelReceptionService);
+        hotelRoomLockService.setSecretKeyProvider(secretKeyProvider);
+        session.setAttribute("hotelRoomLockService", hotelRoomLockService);
     }
 
 
@@ -46,18 +47,11 @@
 
     boolean errorReadingCard = false;
     boolean doorStatus = false;
+
     if (!cardCode.equals(null) && !roomNumber.equals(null)) {
-        try {
-            CardKey cardKey = hotelReceptionService.readCard(cardCode);
-            if(cardKey.getRoomNumber().equals(roomNumber)){
-                TRANSACTIONLOG.info("room number '" + roomNumber + "'  card access successfully opened door: " + cardKey);
-                doorStatus = true;
-            }
-            else{
-                doorStatus = false;
-            }
-        } catch (Exception ex) {
-            errorReadingCard = true;
+        hotelRoomLockService.setRoomNumber(roomNumber);
+        if(hotelRoomLockService.unlockDoor(cardCode)){
+            doorStatus = true;
         }
     }
     
