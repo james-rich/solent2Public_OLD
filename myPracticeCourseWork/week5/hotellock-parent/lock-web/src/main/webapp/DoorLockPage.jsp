@@ -4,10 +4,7 @@
     Author     : cgallen
 --%>
 
-<%@page import="java.util.Date"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="solent.ac.uk.ood.examples.hotellock.model.CardKey"%>
+
 <%@page import="solent.ac.uk.ood.examples.hotellock.model.HotelRoomLockService"%>
 <%@page import="solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider"%>
 <%@page import="solent.ac.uk.ood.examples.hotellock.secretkey.SecretKeyProviderImpl"%>
