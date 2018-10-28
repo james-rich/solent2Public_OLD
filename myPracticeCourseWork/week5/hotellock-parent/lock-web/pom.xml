@@ -19,7 +19,7 @@
 
         <mainClass>org.anvard.jaxrs.server.EmbeddedServer</mainClass>
 
-        <jetty.version>9.0.5.v20130815</jetty.version>
+        <jetty.version>9.3.25.v20180904</jetty.version>
         <jersey.version>2.17</jersey.version>
         <maven.surefire.plugin.version>2.18</maven.surefire.plugin.version>
         <!--        <slf4j.version>1.5.11</slf4j.version>
