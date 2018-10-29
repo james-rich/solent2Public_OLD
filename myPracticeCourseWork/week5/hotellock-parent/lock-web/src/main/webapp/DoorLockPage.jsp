@@ -79,10 +79,12 @@
             <input type="submit" value="Unlock Door">
         </form> 
         <br>
+        <div id="result">
         <% if (doorStatus) { %>
-            <div id="result">
-                Door Unlocked
-            </div>
-        <% } %>
+            Door Unlocked
+        <% }else{ %>
+            Door Locked
+        <% }%>
+        </div>
     </body>
 </html>
