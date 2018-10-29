@@ -32,10 +32,7 @@
         session.setAttribute("sessionRoomNumber", roomNumber);
     }
 
-    String cardCode = null;
-    if(!request.getParameter("cardCode").isEmpty()) {
-        cardCode = (String) request.getParameter("cardCode");
-    }
+    String cardCode = (String) request.getParameter("cardCode");
     if (cardCode == null) {
         cardCode = (String) session.getAttribute("sessionCardCode");
         if (cardCode == null) {
@@ -82,10 +79,16 @@
             <input type="submit" value="Unlock Door">
         </form> 
         <br>
-        <% if (doorStatus) { %>
-            <div id="result">
+        <div id="result">
+            <% if (doorStatus) { %>
+
                 Door Unlocked
-            </div>
-        <% } %>
+
+            <% }else{ %>
+
+                Door Locked
+
+            <% } %>
+        </div>
     </body>
 </html>
