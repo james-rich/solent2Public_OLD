@@ -1,9 +1,9 @@
 package solent.ac.uk.ood.examples.hotellock.reception;
 
+import java.net.URL;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import solent.ac.uk.ood.examples.hotellock.model.CardKey;
 import solent.ac.uk.ood.examples.hotellock.model.HotelReceptionService;
 import solent.ac.uk.ood.examples.hotellock.model.SecretKeyProvider;
@@ -13,8 +13,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 
-public class Controller {
+public class Controller implements Initializable{
 
     //Create Card Elements
     public Button createCard;
@@ -32,7 +34,8 @@ public class Controller {
 
     HotelReceptionService hotelReceptionService = new HotelReceptionServiceImpl();
     SecretKeyProvider secretKeyProvider = new SecretKeyProviderImpl();
-
+   
+        
     public void guiCreateCardCode() {
 
         hotelReceptionService.setSecretKeyProvider(secretKeyProvider);
@@ -69,6 +72,19 @@ public class Controller {
         checkRomNumber.setText(cardKey.getRoomNumber());
         checkValidFrom.setText(cardKey.getStartDate().toString());
         checkExpirationDate.setText(cardKey.getEndDate().toString());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm");
+        Date now = new Date();
+
+        // constants used to generate default values
+        Date tomorrow = new Date(now.getTime() + 1000 * 60 * 60 * 24); // 1 day later
+        String timeStrNow = df.format(now);
+        String timeStrTomorrow = df.format(tomorrow.getTime());
+        ccValidFrom.setText(timeStrNow);
+        ccExpirationDate.setText(timeStrTomorrow);
     }
 
 
