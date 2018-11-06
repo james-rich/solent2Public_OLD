@@ -8,6 +8,9 @@ package solent.ac.uk.ood.examples.cardvalidator.cardservice;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import solent.ac.uk.ood.examples.cardcheck.CardCompany;
+import solent.ac.uk.ood.examples.cardvalidator.accountdao.jaxbimpl.AccountDAOJaxbImpl;
+import solent.ac.uk.ood.examples.cardvalidator.impl.SupportedCardIssuerIdentificationNumbers;
 import solent.ac.uk.ood.examples.cardvalidator.model.Account;
 import solent.ac.uk.ood.examples.cardvalidator.model.AccountDAO;
 import solent.ac.uk.ood.examples.cardvalidator.model.BankApi;
@@ -35,37 +38,42 @@ public class BankApiImpl implements BankApi {
 
     @Override
     public Account createAccount(String issuerIdentificationNumber, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new AccountDAOJaxbImpl("Accounts").createAccount(issuerIdentificationNumber, name);
+        
     }
 
     @Override
     public boolean deleteAccount(String issuerIdentificationNumber, String individualAccountIdentifier) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new AccountDAOJaxbImpl("Accounts").deleteAccount(issuerIdentificationNumber, individualAccountIdentifier);
     }
 
     @Override
     public Account retrieveAccount(String issuerIdentificationNumber, String individualAccountIdentifier) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new AccountDAOJaxbImpl("Accounts").retrieveAccount(issuerIdentificationNumber, individualAccountIdentifier);
     }
 
     @Override
     public Account updateAccount(Account account) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new AccountDAOJaxbImpl("Accounts").updateAccount(account);
     }
 
     @Override
     public List<Account> getAccountsForIssuer(String issuerIdentificationNumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new AccountDAOJaxbImpl("Accounts").getAccountsForIssuer(issuerIdentificationNumber);
     }
 
     @Override
     public List<String> getSupportedIssuerNames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<String> res = null;
+        for(CardCompany c: CardCompany.values()) {
+            res.add(c.getIssuerName());
+        }
+        return res;
     }
 
     @Override
     public String getIssuerIdentifierNumberForName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new
     }
 
     @Override
