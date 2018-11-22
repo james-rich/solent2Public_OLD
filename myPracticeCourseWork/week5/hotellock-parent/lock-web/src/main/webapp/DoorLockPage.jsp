@@ -11,7 +11,7 @@
 <%@page import="solent.ac.uk.ood.examples.hotellock.roomlock.HotelRoomLockServiceImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-//    HotelReceptionService hotelReceptionService = (HotelReceptionService) session.getAttribute("hotelReceptionService");
+//  HotelReceptionService hotelReceptionService = (HotelReceptionService) session.getAttribute("hotelReceptionService");
     HotelRoomLockService hotelRoomLockService = (HotelRoomLockService) session.getAttribute("hotelRoomLockService");
     // If the user session has no hotelReceptionService, create a new one
     if (hotelRoomLockService == null) {
@@ -20,8 +20,7 @@
         hotelRoomLockService.setSecretKeyProvider(secretKeyProvider);
         session.setAttribute("hotelRoomLockService", hotelRoomLockService);
     }
-
-
+    
     String roomNumber = (String) request.getParameter("roomNumber");
     if (roomNumber == null) {
         roomNumber = (String) session.getAttribute("sessionRoomNumber");
@@ -81,9 +80,9 @@
         <br>
         <div id="result">
         <% if (doorStatus) { %>
-            Door Unlocked
+            <p>Door Unlocked</p>
         <% }else{ %>
-            Door Locked
+            <p>Door Locked</p>
         <% }%>
         </div>
     </body>
