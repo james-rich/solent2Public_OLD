@@ -12,7 +12,7 @@ You will then look at how to generate skeleton code from UML class diagrams in N
 
 Try the  [factoryandfacade](../week2/factoryandfacade) exercises.
 
-=======
+
 ## Exercise - factoryAndFacade
 
 Try the  [factoryandfacade](../week2/factoryandfacade) exercises.
