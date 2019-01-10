@@ -1,4 +1,4 @@
-# card-main
+
 
 In this exercise you will extend and complete the classes in card-main so that the whole project builds.
 
@@ -46,7 +46,3 @@ b) once you have created  and tested your 5 strategies, see if you can modify th
 ### Exercise 3.
 for the more ambitious, once you have completed the above exercises, 
 Could you implement CardFactoryDAOImpl.java using spring?
-
-
-
-
