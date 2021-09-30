@@ -37,9 +37,14 @@ nb-configuration.xml
 *.ear
 *.zip
 
+<<<<<<< HEAD
 /week8/bankcard-parent/card-web/accounts-data.xml
 <<<<<<< HEAD
 >>>>>>> upstream/master
 =======
 /workup/example_project_v1_1/exampleproject/swing-client/localDataFile.xml
+=======
+# Log files
+derby.log
+>>>>>>> upstream/master
 
